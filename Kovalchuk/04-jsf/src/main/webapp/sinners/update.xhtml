@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<f:metadata>
+    <f:viewParam name="id" value="#{editSinnerController.sinnerIdStr}"/>
+    <f:viewAction action="#{editSinnerController.initView}"/>
+</f:metadata>
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Create new Sinner</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:breadCrumb>
+        <p:menuitem value="Home" outcome="/index"/>
+        <p:menuitem value="Sinners" outcome="/sinners/list"/>
+        <p:menuitem value="#{editSinnerController.sinner.firstName} #{editSinnerController.sinner.lastName}" outcome="/sinners/view" includeViewParams="true">
+            <f:param name="id" value="#{editSinnerController.sinner.id}"/>
+        </p:menuitem>
+        <p:menuitem value="Update" url="#"/>
+    </p:breadCrumb>
+
+    <p:outputPanel>
+        <h1>Update info on</h1>
+    </p:outputPanel>
+
+    <h:form>
+        <p:messages autoUpdate="true" />
+
+        <p:panel>
+            <h:panelGrid columns="3" cellpadding="5">
+                <h:outputLabel for="firstName" value="First Name"/>
+                <p:inputText id="firstName" value="#{editSinnerController.firstName}" label="First Name" required="true"/>
+                <p:message for="firstName"/>
+
+                <h:outputLabel for="lastName" value="Last Name"/>
+                <p:inputText id="lastName" value="#{editSinnerController.lastName}" label="Last Name" required="true"/>
+                <p:message for="lastName"/>
+
+                <h:outputLabel for="birthDate" value="Date of Birth"/>
+                <p:calendar id="birthDate" value="#{editSinnerController.birthDate}" label="Date of Birth" required="true"  pattern="yyyy-MM-dd" mask="true"/>
+                <p:message for="birthDate"/>
+
+                <h:outputLabel for="deathDate" value="Date of Death"/>
+                <p:calendar id="deathDate" value="#{editSinnerController.deathDate}" label="Date of Death" required="false" pattern="yyyy-MM-dd" mask="true"/>
+                <p:message for="deathDate"/>
+
+            </h:panelGrid>
+        </p:panel>
+        <p:toolbar>
+            <f:facet name="left">
+                <p:commandButton
+                        value="Save"
+                        type="submit"
+                        action="#{editSinnerController.save}"
+                        ajax="false"
+                />
+            </f:facet>
+        </p:toolbar>
+    </h:form>
+
+</h:body>
+</html>

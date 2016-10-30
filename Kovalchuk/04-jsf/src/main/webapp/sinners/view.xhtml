@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+>
+<f:metadata>
+    <f:viewParam name="id" value="#{viewSinnerController.sinnerIdStr}"/>
+    <f:viewAction action="#{viewSinnerController.initView}"/>
+</f:metadata>
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>#{viewSinnerController.sinner.firstName} #{viewSinnerController.sinner.lastName}</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:breadCrumb>
+        <p:menuitem value="Home" outcome="/index"/>
+        <p:menuitem value="Sinners" outcome="/sinners/list"/>
+        <p:menuitem value="#{viewSinnerController.sinner.firstName}, #{viewSinnerController.sinner.lastName}" url="#"/>
+    </p:breadCrumb>
+
+    <p:outputPanel>
+        <h1>${viewSinnerController.sinner.firstName} ${viewSinnerController.sinner.lastName}</h1>
+        <p:panelGrid columns="2">
+            <f:facet name="header">
+                <img src="http://scienceblogs.com/gregladen/files/2012/12/AThe-Devil-and-witches-trampling-a-cross-from-Compendium-maleficarum-1608.jpg" width="480px"/>
+            </f:facet>
+
+            <h:outputText value="First Name:"/>
+            <h:outputText value="#{viewSinnerController.sinner.firstName}"/>
+
+            <h:outputText value="Last Name:"/>
+            <h:outputText value="#{viewSinnerController.sinner.lastName}"/>
+
+            <h:outputText value="Date of Birth:"/>
+            <h:outputText value="#{viewSinnerController.sinner.birthDate}"/>
+
+            <h:outputText value="Date of Death:"/>
+            <h:outputText value="#{viewSinnerController.sinner.deathDate}"/>
+
+            <h:outputText value="Execution:"/>
+            <p:link value='#{viewSinnerController.sinner.execution == null ? "Create" : "Details"}'
+                    outcome='/executions/#{viewSinnerController.sinner.execution == null ? "new" : "view"}'
+                    includeViewParams="true"
+            >
+                <f:param name='#{viewSinnerController.sinner.execution == null ? "sinner_id" : "id"}'
+                         value='#{viewSinnerController.sinner.execution == null ? viewSinnerController.sinner.id : viewSinnerController.sinner.execution.id}'/>
+            </p:link>
+
+            <h:outputText value="id:"/>
+            <h:outputText value="#{viewSinnerController.sinner.id}"/>
+
+        </p:panelGrid>
+
+        <p:dataTable value="#{viewSinnerController.sinner.accuses}" var="accuse">
+            <f:facet name="header">Accuses</f:facet>
+
+            <p:column headerText="id">
+                <h:outputText value="#{accuse.id}"/>
+            </p:column>
+
+            <p:column headerText="Accuses">
+                <h:outputText value="#{accuse.accuses}"/>
+            </p:column>
+
+            <f:facet name="footer">
+                In total there are #{fn:length(viewSinnerController.sinner.accuses)} accuses.
+            </f:facet>
+        </p:dataTable>
+
+        <h:form>
+            <h:inputHidden name="sinnerIdStr" id="sinnerIdStr" value="#{viewSinnerController.sinnerIdStr}"/>
+            <p:message for="sinnerIdStr"/>
+
+            <h:panelGrid columns="4">
+                <p:outputLabel for="accuses" value="Accuses text"/>
+                <p:inputTextarea name="accuses" id="accuses" value="#{viewSinnerController.accuses}"/>
+                <p:message for="accuses"/>
+            </h:panelGrid>
+            <p:commandButton
+                    type="submit"
+                    value="Accuse this sinner"
+                    action="#{viewSinnerController.addAccuse}"
+                    ajax="false"
+            />
+        </h:form>
+    </p:outputPanel>
+
+</h:body>
+</html>

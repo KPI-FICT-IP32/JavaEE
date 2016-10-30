@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:anx="http://anxolerd.github.io/facelets"
+      xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Sinners</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:breadCrumb>
+        <p:menuitem value="Home" outcome="/index"/>
+        <p:menuitem value="Sinners" url="#"/>
+    </p:breadCrumb>
+
+    <p:outputPanel>
+        <h1>Here is the list of sinners!</h1>
+        <p>Burn them on the holy fire!</p>
+    </p:outputPanel>
+    <p:dataTable var="sinner" value="#{sinnersListViewController.all}">
+        <p:column headerText="id">
+            <h:outputText value="#{sinner.id}"/>
+        </p:column>
+
+        <p:column headerText="First name">
+            <h:outputText value="#{sinner.firstName}"/>
+        </p:column>
+
+        <p:column headerText="Last name">
+            <h:outputText value="#{sinner.lastName}"/>
+        </p:column>
+
+        <p:column headerText="Is alive?">
+            <anx:booleanOutput
+                    condition="#{sinner.deathDate == null}"
+                    trueDisplay="&#128378;"
+                    falseDisplay="&#9760;"
+            />
+        </p:column>
+
+        <p:column headerText="Actions">
+            <p:button value="View"
+                      type="button"
+                      outcome="/sinners/view"
+                      includeViewParams="true">
+                <f:param name="id" value="#{sinner.id}"/>
+            </p:button>
+            <p:button value="Edit"
+                      type="button"
+                      outcome="/sinners/update"
+                      includeViewParams="true">
+                <f:param name="id" value="#{sinner.id}"/>
+            </p:button>
+        </p:column>
+
+        <f:facet name="footer">
+            In total there are #{fn:length(sinnersListViewController.all)} sinners.
+        </f:facet>
+    </p:dataTable>
+    <p:toolbar>
+        <f:facet name="right">
+            <p:button type="button" value="Add new" outcome="/sinners/new"/>
+        </f:facet>
+    </p:toolbar>
+</h:body>
+</html>

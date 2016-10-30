@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Welcome to inquisition</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:breadCrumb>
+        <p:menuitem value="Home" outcome="/index" />
+    </p:breadCrumb>
+
+    <p:outputPanel>
+        <h1>Welcome to spanish inquisition!</h1>
+        <blockquote>
+            Our chief weapon is surprise...surprise and fear...fear and surprise....
+            Our two weapons are fear and surprise...and ruthless efficiency....
+            Our
+            <em>three</em> weapons are fear, surprise, and ruthless efficiency...and an almost fanatical devotion to the Pope....
+            Our <em>four</em>...no...
+            <em>Amongst</em> our weapons.... Amongst our weaponry...are such elements as fear, surprise.... I'll come in again.
+        </blockquote>
+
+        <h2>Resources</h2>
+        <p>
+            <p:link value="Sinners" outcome="/sinners/list"/>
+        </p>
+
+    </p:outputPanel>
+
+    <p:outputPanel>
+    </p:outputPanel>
+</h:body>
+</html>

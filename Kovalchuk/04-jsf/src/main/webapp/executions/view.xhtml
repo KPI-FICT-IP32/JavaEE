@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+<f:metadata>
+    <f:viewParam name="id" value="#{viewExecutionController.executionIdStr}"/>
+    <f:viewAction action="#{viewExecutionController.initView}"/>
+</f:metadata>
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Execution</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:breadCrumb>
+        <p:menuitem value="Home" outcome="/index"/>
+        <p:menuitem value="Sinners" outcome="/sinners/list"/>
+        <p:menuitem value="#{viewExecutionController.execution.sinner.firstName}" outcome="/sinners/view"
+                    includeViewParams="">
+            <f:param name="id" value="#{viewExecutionController.execution.sinner.id}"/>
+        </p:menuitem>
+        <p:menuitem value="Execution" url="#"/>
+    </p:breadCrumb>
+
+    <p:outputPanel>
+        <h1>Execution of ${viewExecutionController.execution.sinner.firstName}</h1>
+        <p:panelGrid columns="2">
+            <f:facet name="header">
+                <img src="http://www.inquisition-art.net/gallery/page18.jpg" width="320px"/>
+            </f:facet>
+
+            <h:outputText value="Who:"/>
+            <h:outputText value="#{viewExecutionController.execution.sinner.firstName}"/>
+
+            <h:outputText value="Announce:"/>
+            <h:outputText value="#{viewExecutionController.execution.description}"/>
+
+            <h:outputText value="Where:"/>
+            <h:outputText value="#{viewExecutionController.execution.place}"/>
+
+            <h:outputText value="When:"/>
+            <h:outputText value="#{viewExecutionController.execution.date}"/>
+
+            <h:outputText value="id:"/>
+            <h:outputText value="#{viewExecutionController.execution.id}"/>
+        </p:panelGrid>
+    </p:outputPanel>
+
+</h:body>
+</html>
