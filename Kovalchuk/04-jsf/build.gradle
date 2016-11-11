@@ -23,6 +23,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.10'
 
     // Web
+    compileOnly 'org.jboss.spec.javax.servlet:jboss-servlet-api_3.1_spec'
     compileOnly 'org.jboss.spec.javax.faces:jboss-jsf-api_2.2_spec'
     compile 'org.primefaces:primefaces:6.0'
 
@@ -32,6 +33,7 @@ dependencies {
     // Persistence dependencies
     compileOnly 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api'
     compileOnly 'org.hibernate:hibernate-core'
+    compileOnly 'org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec'
 
     // Bean Validation Implementation
     compileOnly 'org.hibernate:hibernate-validator'
