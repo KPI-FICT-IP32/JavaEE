@@ -1,0 +1,3 @@
+[submodule "Kovalchuk/mkr"]
+	path = Kovalchuk/mkr
+	url = git@github.com:anxolerd/crm.git
