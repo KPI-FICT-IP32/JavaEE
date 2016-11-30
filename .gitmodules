@@ -1,3 +1,6 @@
 [submodule "Kovalchuk/mkr"]
 	path = Kovalchuk/mkr
 	url = git@github.com:anxolerd/crm.git
+[submodule "Tatus/mkr"]
+	path = Tatus/mkr
+	url = https://github.com/ttatus/quiz.git
