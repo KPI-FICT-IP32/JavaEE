@@ -6,7 +6,7 @@
 	url = https://github.com/ttatus/quiz.git
 [submodule "Gunawardana/java-ee-quickstart"]
 	path = Gunawardana/quickstart
-	url = https://github.com/exarus/java-ee-quickstart
+	url = https://github.com/exarus/java-ee-quickstart.git
 [submodule "Gunawardana/cdi-lecture"]
 	path = Gunawardana/cdi-lecture
-	url = https://github.com/exarus/java-ee-cdi-lecture
+	url = https://github.com/exarus/java-ee-cdi-lecture.git
