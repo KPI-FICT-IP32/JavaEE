@@ -10,3 +10,6 @@
 [submodule "Gunawardana/home-assignments"]
 	path = Gunawardana/home-assignments
 	url = https://github.com/exarus/java-ee-quickstart.git
+[submodule "Gunawardana/final-assignment"]
+	path = Gunawardana/final-assignment
+	url = https://github.com/TrackSee/Taxi-Service-System.git
