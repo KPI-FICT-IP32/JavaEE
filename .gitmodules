@@ -4,3 +4,9 @@
 [submodule "Tatus/mkr"]
 	path = Tatus/mkr
 	url = https://github.com/ttatus/quiz.git
+[submodule "Gunawardana/cdi-lecture"]
+	path = Gunawardana/cdi-lecture
+	url = https://github.com/exarus/java-ee-cdi-lecture.git
+[submodule "Gunawardana/home-assignments"]
+	path = Gunawardana/home-assignments
+	url = https://github.com/exarus/java-ee-quickstart.git
